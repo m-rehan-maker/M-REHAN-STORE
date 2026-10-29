@@ -1,0 +1,144 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M Rehan | Online Store</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #172331;
+      background: #f5f7fb;
+    }
+
+    header {
+      background: #14202c;
+      color: white;
+      padding: 22px;
+      text-align: center;
+    }
+
+    header h1 { margin: 0; }
+    header p { margin-bottom: 0; }
+
+    nav {
+      background: #26384a;
+      padding: 14px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 55px 20px;
+      background: white;
+    }
+
+    .hero h2 { font-size: 36px; }
+    .hero span { color: #315efb; }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 15px;
+    }
+
+    .product {
+      background: white;
+      width: 240px;
+      padding: 22px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px #00000010;
+    }
+
+    .product .emoji { font-size: 55px; }
+
+    button {
+      background: #14202c;
+      color: white;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #14202c;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>M Rehan</h1>
+    <p>Shop More, Live Better</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Welcome to <span>M Rehan Store</span></h2>
+    <p>Your own online shopping destination!</p>
+    <a href="#products">
+      <button>Shop Now</button>
+    </a>
+  </section>
+
+  <section class="products" id="products">
+    <div class="product">
+      <div class="emoji">🎧</div>
+      <h3>Headphones</h3>
+      <p>Rs. 2,500</p>
+      <button onclick="addToCart('Headphones')">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product">
+      <div class="emoji">⌚</div>
+      <h3>Smart Watch</h3>
+      <p>Rs. 4,000</p>
+      <button onclick="addToCart('Smart Watch')">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="product">
+      <div class="emoji">🎒</div>
+      <h3>Backpack</h3>
+      <p>Rs. 1,800</p>
+      <button onclick="addToCart('Backpack')">
+        Add to Cart
+      </button>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>© 2026 M Rehan. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function addToCart(product) {
+      alert(product + " added to your cart!");
+    }
+  </script>
+
+</body>
+</html>
