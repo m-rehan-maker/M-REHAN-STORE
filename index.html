@@ -1,100 +1,722 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M Rehan Store</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#172331;background:#f4f6fa}nav{background:#26394b;padding:16px 5%;display:flex;justify-content:flex-end;gap:24px;flex-wrap:wrap}nav a{color:white;text-decoration:none;font-size:18px}.hero{background:white;text-align:center;padding:75px 20px}.hero h1{font-size:clamp(30px,4vw,48px)}.blue{color:#3763ff}.hero p{font-size:20px}.btn{border:0;background:#15212d;color:white;padding:14px 22px;border-radius:9px;font-size:16px;cursor:pointer}.products{max-width:1120px;margin:auto;padding:42px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px}.product,.panel{background:white;border-radius:16px;padding:28px 22px;text-align:center;box-shadow:0 6px 20px #14233212}.emoji{font-size:64px;margin:8px 0 22px}.product h2{font-size:24px}.price{font-size:20px;margin:24px}.cart-area{max-width:900px;margin:0 auto 50px;padding:0 20px}.panel{text-align:left;margin-bottom:24px}.cart-row{display:grid;grid-template-columns:1fr auto auto auto;gap:14px;align-items:center;border-bottom:1px solid #e5e9ef;padding:14px 0}.qty{display:flex;gap:8px;align-items:center}.qty button,.remove{border:0;background:#e9eef5;padding:7px 11px;border-radius:7px;cursor:pointer}.remove{color:#9a1b1b}.total{text-align:right;font-size:22px;font-weight:bold;margin:22px 0}form{display:grid;gap:14px}label{font-weight:bold;display:grid;gap:7px}input,textarea{width:100%;padding:12px;border:1px solid #cbd3df;border-radius:8px;font:inherit}textarea{min-height:80px}.note{font-size:14px;color:#586779;line-height:1.5}.hidden{display:none}footer{background:#26394b;color:white;text-align:center;padding:22px}@media(max-width:600px){nav{justify-content:center}.cart-row{grid-template-columns:1fr auto}.cart-row .line-price{grid-column:2;grid-row:1}}
-</style>
-<style>
-:root{--ink:#142033;--muted:#64748b;--navy:#101827;--green:#176b4d;--pale:#dff5e9;--paper:#f5f7fb;--line:#e4e9f0;--shadow:0 14px 36px rgba(16,24,39,.08)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}
-nav{position:sticky;top:0;z-index:10;background:rgba(16,24,39,.97);backdrop-filter:blur(12px);padding:14px max(5%,calc((100% - 1120px)/2));display:flex;justify-content:flex-end;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 5px 20px #0002}
-nav a{color:#f3f6fb;text-decoration:none;font-size:14px;font-weight:650;transition:color .2s}
-nav a:hover{color:#9be8b9}
-.hero{max-width:1120px;margin:26px auto 0;padding:clamp(34px,7vw,76px) clamp(20px,5vw,60px);border-radius:28px;background:radial-gradient(circle at 88% 18%,#64d19b3b,transparent 28%),linear-gradient(120deg,#101827,#1c3441 68%,#1a5944);color:#fff;text-align:left;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;width:260px;height:260px;right:-70px;bottom:-110px;border:1px solid #ffffff2c;border-radius:50%;box-shadow:0 0 0 30px #ffffff09,0 0 0 65px #ffffff07;pointer-events:none}
-.hero h1{font-size:clamp(32px,6vw,62px);line-height:1.08;letter-spacing:-.045em;margin:0 0 18px;position:relative;z-index:1}
-.blue{color:#9be8b9}
-.hero p{font-size:clamp(16px,2vw,19px);max-width:570px;color:#d0dae5;margin:0 0 26px;position:relative;z-index:1}
-.btn{border:0;background:var(--green);color:#fff;padding:13px 20px;border-radius:12px;font-size:15px;font-weight:750;cursor:pointer;transition:transform .18s,background .18s;min-height:45px}
-.btn:hover{background:#12583f;transform:translateY(-1px)}
-.hero .btn{position:relative;z-index:1}
-.products{max-width:1120px;margin:auto;padding:50px 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.product,.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;text-align:center;box-shadow:0 5px 20px #10203308;transition:transform .2s,box-shadow .2s;min-width:0}
-.product:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.product-image{display:block;width:100%;height:220px;object-fit:contain;padding:18px;margin:5px auto 20px;border-radius:15px;background:linear-gradient(145deg,#f7f9fc,#edf5f0)}
-.product h2{font-size:21px;margin:8px 0}
-.price{font-size:20px;font-weight:850;margin:16px 0 20px;color:var(--green)}
-.cart-area{max-width:920px;margin:0 auto 56px;padding:0 20px}
-.panel{text-align:left;margin-bottom:22px;padding:clamp(20px,4vw,32px)}
-.panel h2{font-size:25px;letter-spacing:-.03em;margin-top:0}
-.cart-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:14px;align-items:center;border-bottom:1px solid var(--line);padding:16px 0}
-.qty{display:flex;gap:8px;align-items:center;font-weight:750}
-.qty button,.remove{border:1px solid var(--line);background:#f7f9fc;padding:7px 11px;border-radius:8px;cursor:pointer}
-.qty button:hover{background:var(--pale)}
-.remove{color:#a12626;background:#fff7f7}
-.total{text-align:right;font-size:22px;font-weight:850;margin:22px 0}
-form{display:grid;gap:15px}
-label{font-weight:700;font-size:14px;display:grid;gap:7px}
-input,textarea{width:100%;padding:13px 14px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:var(--ink);font:inherit;outline:none}
-input:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px #176b4d1f}
-textarea{min-height:90px;resize:vertical}
-.note{font-size:13px;color:var(--muted);line-height:1.6}
-.hidden{display:none!important}
-footer{background:var(--navy);color:#fff;text-align:center;padding:30px 22px}
-footer p{color:#bdc8d6;margin:6px 0 0;font-size:13px}
-@media(max-width:800px){nav{justify-content:center;gap:16px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.product{padding:17px}.product-image{height:190px;padding:14px}}
-@media(max-width:560px){nav{position:relative;padding:14px 10px;gap:10px 16px}nav a{font-size:13px}.hero{margin:12px 12px 0;padding:32px 22px;border-radius:21px}.hero h1{font-size:37px}.hero p{font-size:15px}.products{padding:35px 12px;gap:10px}.product{padding:11px;border-radius:15px}.product-image{height:145px;padding:10px;margin-bottom:12px}.product h2{font-size:16px}.price{font-size:17px;margin:12px 0}.product .btn{width:100%;font-size:12px;padding:10px 7px}.cart-area{padding:0 12px 40px}.panel{padding:18px;border-radius:16px}.panel h2{font-size:21px}.cart-row{grid-template-columns:minmax(0,1fr) auto;gap:10px}.cart-row .line-price{grid-column:2;grid-row:1}.cart-row .qty{grid-column:1;grid-row:2}.cart-row .remove{grid-column:2;grid-row:2}.total{font-size:20px}form .btn{width:100%}footer{padding:24px 16px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>M Rehan Store</title>
+  <style>
+    * {
+      box-sizing: border-box
+    }
 
-</head><body>
-<nav><a href="#home">Home</a><a href="#products">Products</a><a href="#cart">Cart (<span id="count">0</span>)</a><a href="#contact">Contact</a></nav>
-<section class="hero" id="home"><h1>Welcome to <span class="blue">M Rehan Store</span></h1><p>Your own online shopping destination!</p><a href="#products"><button class="btn">Shop Now</button></a></section>
-<section class="products" id="products">
-<article class="product"><img class="product-image" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85" alt="Premium over-ear headphones" loading="lazy"><h2>Headphones</h2><p class="price">Rs. 2,500</p><button class="btn" onclick="add('headphones')">Add to Cart</button></article>
-<article class="product"><img class="product-image" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85" alt="Modern smartwatch" loading="lazy"><h2>Smart Watch</h2><p class="price">Rs. 4,000</p><button class="btn" onclick="add('watch')">Add to Cart</button></article>
-<article class="product"><img class="product-image" src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85" alt="Stylish backpack" loading="lazy"><h2>Backpack</h2><p class="price">Rs. 1,800</p><button class="btn" onclick="add('backpack')">Add to Cart</button></article>
-</section>
-<main class="cart-area"><section class="panel" id="cart"><h2>Your Cart</h2><div id="items">Your cart is empty. Add a product to get started.</div><div class="total" id="total">Total: Rs. 0</div><button class="btn" id="checkoutBtn" onclick="showCheckout()">Proceed to Checkout</button><p class="note">Cart is saved in this browser on this device.</p></section>
-<section class="panel hidden" id="checkout"><h2>Checkout — Cash on Delivery</h2><form id="form"><label>Full name<input id="name" required maxlength="100" autocomplete="name" placeholder="Your full name"></label><label>Phone number<input id="phone" required maxlength="30" autocomplete="tel" placeholder="03XX XXXXXXX"></label><label>Full delivery address<textarea id="address" required maxlength="500" autocomplete="street-address" placeholder="House, street, area, city"></textarea></label><label>Order notes (optional)<textarea id="notes" maxlength="500" placeholder="Colour or delivery instructions"></textarea></label><p class="note">To receive orders, replace the demo WhatsApp number in the code with your store's WhatsApp number. An order is sent only after you press Send in WhatsApp.</p><button class="btn" type="submit">Place Order on WhatsApp</button><button class="btn" type="button" onclick="hideCheckout()" style="background:#657386">Back to Cart</button></form><p id="status" class="note"></p></section></main>
-<footer id="contact"><strong>M Rehan Store</strong><p>Contact: Add your business contact details here</p></footer>
-<script>
-const STORE_WHATSAPP_NUMBER="923348660508"; // Replace with your WhatsApp number: Pakistan format 92 + number without first 0, no + or spaces.
-const products={headphones:{name:"Headphones",price:2500,emoji:"🎧"},watch:{name:"Smart Watch",price:4000,emoji:"⌚"},backpack:{name:"Backpack",price:1800,emoji:"🎒"}};
-let cart={};try{cart=JSON.parse(localStorage.getItem("mRehanCart")||"{}")}catch(e){cart={}}
-function save(){localStorage.setItem("mRehanCart",JSON.stringify(cart));render()}
-function add(id){cart[id]=(cart[id]||0)+1;save();document.getElementById("cart").scrollIntoView({behavior:"smooth"})}
-function qty(id,n){cart[id]=(cart[id]||0)+n;if(cart[id]<=0)delete cart[id];save()}
-function removeItem(id){delete cart[id];save()}
-function sum(){return Object.keys(cart).reduce((s,id)=>s+(products[id]?products[id].price*cart[id]:0),0)}
-function render(){let ids=Object.keys(cart).filter(id=>products[id]&&cart[id]>0);document.getElementById("count").textContent=ids.reduce((s,id)=>s+cart[id],0);document.getElementById("total").textContent="Total: Rs. "+sum().toLocaleString("en-PK");let b=document.getElementById("checkoutBtn");b.disabled=!ids.length;b.style.opacity=ids.length ? "1" : "0.5";document.getElementById("items").innerHTML=ids.length?ids.map(id=>{let p=products[id];return `<div class="cart-row"><div><b>${p.emoji} ${p.name}</b><br><span class="note">Rs. ${p.price.toLocaleString("en-PK")} each</span></div><div class="qty"><button onclick="qty('${id}',-1)">−</button>${cart[id]}<button onclick="qty('${id}',1)">+</button></div><b class="line-price">Rs. ${(p.price*cart[id]).toLocaleString("en-PK")}</b><button class="remove" onclick="removeItem('${id}')">Remove</button></div>`}).join(""):"Your cart is empty. Add a product to get started."}
-function showCheckout(){if(sum()){document.getElementById("checkout").classList.remove("hidden");document.getElementById("checkout").scrollIntoView({behavior:"smooth"})}}
-function hideCheckout(){document.getElementById("checkout").classList.add("hidden");document.getElementById("cart").scrollIntoView({behavior:"smooth"})}
-document.getElementById("form").addEventListener("submit",e=>{e.preventDefault();if(!sum())return alert("Your cart is empty.");if(STORE_WHATSAPP_NUMBER==="923001234567")return alert("Please replace the demo WhatsApp number in the code before testing orders.");let lines=Object.keys(cart).filter(id=>products[id]&&cart[id]>0).map(id=>`- ${products[id].name} x ${cart[id]} = Rs. ${(products[id].price*cart[id]).toLocaleString("en-PK")}`);let msg=["NEW ORDER — M Rehan Store","",...lines,"","Total: Rs. "+sum().toLocaleString("en-PK"),"Payment: Cash on Delivery","","Customer: "+document.getElementById("name").value.trim(),"Phone: "+document.getElementById("phone").value.trim(),"Address: "+document.getElementById("address").value.trim(),document.getElementById("notes").value.trim()?"Notes: "+document.getElementById("notes").value.trim():""].filter(Boolean).join("\n");window.open("https://wa.me/"+STORE_WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg),"_blank","noopener");document.getElementById("status").textContent="WhatsApp opened. Press Send in WhatsApp to send the order to the store."});
-render();
-</script></body></html>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #172331;
+      background: #f4f6fa
+    }
 
-<section id="policies" style="max-width:1120px;margin:40px auto;padding:24px;background:#fff;border:1px solid #e4e9f0;border-radius:20px;font-family:Arial,sans-serif;line-height:1.7;">
+    nav {
+      background: #26394b;
+      padding: 16px 5%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 24px;
+      flex-wrap: wrap
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px
+    }
+
+    .hero {
+      background: white;
+      text-align: center;
+      padding: 75px 20px
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 4vw, 48px)
+    }
+
+    .blue {
+      color: #3763ff
+    }
+
+    .hero p {
+      font-size: 20px
+    }
+
+    .btn {
+      border: 0;
+      background: #15212d;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 9px;
+      font-size: 16px;
+      cursor: pointer
+    }
+
+    .products {
+      max-width: 1120px;
+      margin: auto;
+      padding: 42px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 26px
+    }
+
+    .product,
+    .panel {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 0 6px 20px #14233212
+    }
+
+    .emoji {
+      font-size: 64px;
+      margin: 8px 0 22px
+    }
+
+    .product h2 {
+      font-size: 24px
+    }
+
+    .price {
+      font-size: 20px;
+      margin: 24px
+    }
+
+    .cart-area {
+      max-width: 900px;
+      margin: 0 auto 50px;
+      padding: 0 20px
+    }
+
+    .panel {
+      text-align: left;
+      margin-bottom: 24px
+    }
+
+    .cart-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: 14px;
+      align-items: center;
+      border-bottom: 1px solid #e5e9ef;
+      padding: 14px 0
+    }
+
+    .qty {
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .qty button,
+    .remove {
+      border: 0;
+      background: #e9eef5;
+      padding: 7px 11px;
+      border-radius: 7px;
+      cursor: pointer
+    }
+
+    .remove {
+      color: #9a1b1b
+    }
+
+    .total {
+      text-align: right;
+      font-size: 22px;
+      font-weight: bold;
+      margin: 22px 0
+    }
+
+    form {
+      display: grid;
+      gap: 14px
+    }
+
+    label {
+      font-weight: bold;
+      display: grid;
+      gap: 7px
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd3df;
+      border-radius: 8px;
+      font: inherit
+    }
+
+    textarea {
+      min-height: 80px
+    }
+
+    .note {
+      font-size: 14px;
+      color: #586779;
+      line-height: 1.5
+    }
+
+    .hidden {
+      display: none
+    }
+
+    footer {
+      background: #26394b;
+      color: white;
+      text-align: center;
+      padding: 22px
+    }
+
+    @media(max-width:600px) {
+      nav {
+        justify-content: center
+      }
+
+      .cart-row {
+        grid-template-columns: 1fr auto
+      }
+
+      .cart-row .line-price {
+        grid-column: 2;
+        grid-row: 1
+      }
+    }
+  </style>
+  <style>
+    :root {
+      --ink: #142033;
+      --muted: #64748b;
+      --navy: #101827;
+      --green: #176b4d;
+      --pale: #dff5e9;
+      --paper: #f5f7fb;
+      --line: #e4e9f0;
+      --shadow: 0 14px 36px rgba(16, 24, 39, .08)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(16, 24, 39, .97);
+      backdrop-filter: blur(12px);
+      padding: 14px max(5%, calc((100% - 1120px)/2));
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: 0 5px 20px #0002
+    }
+
+    nav a {
+      color: #f3f6fb;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 650;
+      transition: color .2s
+    }
+
+    nav a:hover {
+      color: #9be8b9
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 26px auto 0;
+      padding: clamp(34px, 7vw, 76px) clamp(20px, 5vw, 60px);
+      border-radius: 28px;
+      background: radial-gradient(circle at 88% 18%, #64d19b3b, transparent 28%), linear-gradient(120deg, #101827, #1c3441 68%, #1a5944);
+      color: #fff;
+      text-align: left;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero:after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -70px;
+      bottom: -110px;
+      border: 1px solid #ffffff2c;
+      border-radius: 50%;
+      box-shadow: 0 0 0 30px #ffffff09, 0 0 0 65px #ffffff07;
+      pointer-events: none
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 62px);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+      margin: 0 0 18px;
+      position: relative;
+      z-index: 1
+    }
+
+    .blue {
+      color: #9be8b9
+    }
+
+    .hero p {
+      font-size: clamp(16px, 2vw, 19px);
+      max-width: 570px;
+      color: #d0dae5;
+      margin: 0 0 26px;
+      position: relative;
+      z-index: 1
+    }
+
+    .btn {
+      border: 0;
+      background: var(--green);
+      color: #fff;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 750;
+      cursor: pointer;
+      transition: transform .18s, background .18s;
+      min-height: 45px
+    }
+
+    .btn:hover {
+      background: #12583f;
+      transform: translateY(-1px)
+    }
+
+    .hero .btn {
+      position: relative;
+      z-index: 1
+    }
+
+    .products {
+      max-width: 1120px;
+      margin: auto;
+      padding: 50px 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px
+    }
+
+    .product,
+    .panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 5px 20px #10203308;
+      transition: transform .2s, box-shadow .2s;
+      min-width: 0
+    }
+
+    .product:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow)
+    }
+
+    .product-image {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      padding: 18px;
+      margin: 5px auto 20px;
+      border-radius: 15px;
+      background: linear-gradient(145deg, #f7f9fc, #edf5f0)
+    }
+
+    .product h2 {
+      font-size: 21px;
+      margin: 8px 0
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 850;
+      margin: 16px 0 20px;
+      color: var(--green)
+    }
+
+    .cart-area {
+      max-width: 920px;
+      margin: 0 auto 56px;
+      padding: 0 20px
+    }
+
+    .panel {
+      text-align: left;
+      margin-bottom: 22px;
+      padding: clamp(20px, 4vw, 32px)
+    }
+
+    .panel h2 {
+      font-size: 25px;
+      letter-spacing: -.03em;
+      margin-top: 0
+    }
+
+    .cart-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto auto;
+      gap: 14px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0
+    }
+
+    .qty {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-weight: 750
+    }
+
+    .qty button,
+    .remove {
+      border: 1px solid var(--line);
+      background: #f7f9fc;
+      padding: 7px 11px;
+      border-radius: 8px;
+      cursor: pointer
+    }
+
+    .qty button:hover {
+      background: var(--pale)
+    }
+
+    .remove {
+      color: #a12626;
+      background: #fff7f7
+    }
+
+    .total {
+      text-align: right;
+      font-size: 22px;
+      font-weight: 850;
+      margin: 22px 0
+    }
+
+    form {
+      display: grid;
+      gap: 15px
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 14px;
+      display: grid;
+      gap: 7px
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      outline: none
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px #176b4d1f
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6
+    }
+
+    .hidden {
+      display: none !important
+    }
+
+    footer {
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+      padding: 30px 22px
+    }
+
+    footer p {
+      color: #bdc8d6;
+      margin: 6px 0 0;
+      font-size: 13px
+    }
+
+    @media(max-width:800px) {
+      nav {
+        justify-content: center;
+        gap: 16px
+      }
+
+      .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px
+      }
+
+      .product {
+        padding: 17px
+      }
+
+      .product-image {
+        height: 190px;
+        padding: 14px
+      }
+    }
+
+    @media(max-width:560px) {
+      nav {
+        position: relative;
+        padding: 14px 10px;
+        gap: 10px 16px
+      }
+
+      nav a {
+        font-size: 13px
+      }
+
+      .hero {
+        margin: 12px 12px 0;
+        padding: 32px 22px;
+        border-radius: 21px
+      }
+
+      .hero h1 {
+        font-size: 37px
+      }
+
+      .hero p {
+        font-size: 15px
+      }
+
+      .products {
+        padding: 35px 12px;
+        gap: 10px
+      }
+
+      .product {
+        padding: 11px;
+        border-radius: 15px
+      }
+
+      .product-image {
+        height: 145px;
+        padding: 10px;
+        margin-bottom: 12px
+      }
+
+      .product h2 {
+        font-size: 16px
+      }
+
+      .price {
+        font-size: 17px;
+        margin: 12px 0
+      }
+
+      .product .btn {
+        width: 100%;
+        font-size: 12px;
+        padding: 10px 7px
+      }
+
+      .cart-area {
+        padding: 0 12px 40px
+      }
+
+      .panel {
+        padding: 18px;
+        border-radius: 16px
+      }
+
+      .panel h2 {
+        font-size: 21px
+      }
+
+      .cart-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px
+      }
+
+      .cart-row .line-price {
+        grid-column: 2;
+        grid-row: 1
+      }
+
+      .cart-row .qty {
+        grid-column: 1;
+        grid-row: 2
+      }
+
+      .cart-row .remove {
+        grid-column: 2;
+        grid-row: 2
+      }
+
+      .total {
+        font-size: 20px
+      }
+
+      form .btn {
+        width: 100%
+      }
+
+      footer {
+        padding: 24px 16px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      *,
+      *:before,
+      *:after {
+        transition: none !important
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav><a href="#home">Home</a><a href="#products">Products</a><a href="#cart">Cart (<span id="count">0</span>)</a><a
+      href="#contact">Contact</a></nav>
+  <section class="hero" id="home">
+    <h1>Welcome to <span class="blue">M Rehan Store</span></h1>
+    <p>Your own online shopping destination!</p><a href="#products"><button class="btn">Shop Now</button></a>
+  </section>
+  <section class="products" id="products">
+    <article class="product"><img class="product-image"
+        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85"
+        alt="Premium over-ear headphones" loading="lazy">
+      <h2>Headphones</h2>
+      <p class="price">Rs. 5,000</p><button class="btn" onclick="add('headphones')">Add to Cart</button>
+    </article>
+    <article class="product"><img class="product-image"
+        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"
+        alt="Modern smartwatch" loading="lazy">
+      <h2>Smart Watch</h2>
+      <p class="price">Rs. 4,000</p><button class="btn" onclick="add('watch')">Add to Cart</button>
+    </article>
+    <article class="product"><img class="product-image"
+        src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85"
+        alt="Stylish backpack" loading="lazy">
+      <h2>Backpack</h2>
+      <p class="price">Rs. 3,500</p><button class="btn" onclick="add('backpack')">Add to Cart</button>
+    </article>
+  </section>
+  <main class="cart-area">
+    <section class="panel" id="cart">
+      <h2>Your Cart</h2>
+      <div id="items">Your cart is empty. Add a product to get started.</div>
+      <div class="total" id="total">Total: Rs. 0</div><button class="btn" id="checkoutBtn"
+        onclick="showCheckout()">Proceed to Checkout</button>
+      <p class="note">Cart is saved in this browser on this device.</p>
+    </section>
+    <section class="panel hidden" id="checkout">
+      <h2>Checkout — Cash on Delivery</h2>
+      <form id="form"><label>Full name<input id="name" required maxlength="100" autocomplete="name"
+            placeholder="Your full name"></label><label>Phone number<input id="phone" required maxlength="30"
+            autocomplete="tel" placeholder="03XX XXXXXXX"></label><label>Full delivery address<textarea id="address"
+            required maxlength="500" autocomplete="street-address"
+            placeholder="House, street, area, city"></textarea></label><label>Order notes (optional)<textarea id="notes"
+            maxlength="500" placeholder="Colour or delivery instructions"></textarea></label>
+        <p class="note">To receive orders, replace the demo WhatsApp number in the code with your store's WhatsApp
+          number. An order is sent only after you press Send in WhatsApp.</p><button class="btn" type="submit">Place
+          Order on WhatsApp</button><button class="btn" type="button" onclick="hideCheckout()"
+          style="background:#657386">Back to Cart</button>
+      </form>
+      <p id="status" class="note"></p>
+    </section>
+  </main>
+  <footer id="contact"><strong>M Rehan Store</strong>
+    <p>Contact: Add your business contact details here</p>
+  </footer>
+  <script>
+    const STORE_WHATSAPP_NUMBER = "923348660508"; // Replace with your WhatsApp number: Pakistan format 92 + number without first 0, no + or spaces.
+    const products = { headphones: { name: "Headphones", price: 5000, emoji: "🎧" }, watch: { name: "Smart Watch", price: 4000, emoji: "⌚" }, backpack: { name: "Backpack", price: 3500, emoji: "🎒" } };
+    let cart = {}; try { cart = JSON.parse(localStorage.getItem("mRehanCart") || "{}") } catch (e) { cart = {} }
+    function save() { localStorage.setItem("mRehanCart", JSON.stringify(cart)); render() }
+    function add(id) { cart[id] = (cart[id] || 0) + 1; save(); document.getElementById("cart").scrollIntoView({ behavior: "smooth" }) }
+    function qty(id, n) { cart[id] = (cart[id] || 0) + n; if (cart[id] <= 0) delete cart[id]; save() }
+    function removeItem(id) { delete cart[id]; save() }
+    function sum() { return Object.keys(cart).reduce((s, id) => s + (products[id] ? products[id].price * cart[id] : 0), 0) }
+    function render() { let ids = Object.keys(cart).filter(id => products[id] && cart[id] > 0); document.getElementById("count").textContent = ids.reduce((s, id) => s + cart[id], 0); document.getElementById("total").textContent = "Total: Rs. " + sum().toLocaleString("en-PK"); let b = document.getElementById("checkoutBtn"); b.disabled = !ids.length; b.style.opacity = ids.length ? "1" : "0.5"; document.getElementById("items").innerHTML = ids.length ? ids.map(id => { let p = products[id]; return `<div class="cart-row"><div><b>${p.emoji} ${p.name}</b><br><span class="note">Rs. ${p.price.toLocaleString("en-PK")} each</span></div><div class="qty"><button onclick="qty('${id}',-1)">−</button>${cart[id]}<button onclick="qty('${id}',1)">+</button></div><b class="line-price">Rs. ${(p.price * cart[id]).toLocaleString("en-PK")}</b><button class="remove" onclick="removeItem('${id}')">Remove</button></div>` }).join("") : "Your cart is empty. Add a product to get started." }
+    function showCheckout() { if (sum()) { document.getElementById("checkout").classList.remove("hidden"); document.getElementById("checkout").scrollIntoView({ behavior: "smooth" }) } }
+    function hideCheckout() { document.getElementById("checkout").classList.add("hidden"); document.getElementById("cart").scrollIntoView({ behavior: "smooth" }) }
+    document.getElementById("form").addEventListener("submit", e => { e.preventDefault(); if (!sum()) return alert("Your cart is empty."); if (STORE_WHATSAPP_NUMBER === "923001234567") return alert("Please replace the demo WhatsApp number in the code before testing orders."); let lines = Object.keys(cart).filter(id => products[id] && cart[id] > 0).map(id => `- ${products[id].name} x ${cart[id]} = Rs. ${(products[id].price * cart[id]).toLocaleString("en-PK")}`); let msg = ["NEW ORDER — M Rehan Store", "", ...lines, "", "Total: Rs. " + sum().toLocaleString("en-PK"), "Payment: Cash on Delivery", "", "Customer: " + document.getElementById("name").value.trim(), "Phone: " + document.getElementById("phone").value.trim(), "Address: " + document.getElementById("address").value.trim(), document.getElementById("notes").value.trim() ? "Notes: " + document.getElementById("notes").value.trim() : ""].filter(Boolean).join("\n"); window.open("https://wa.me/" + STORE_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); document.getElementById("status").textContent = "WhatsApp opened. Press Send in WhatsApp to send the order to the store." });
+    render();
+  </script>
+</body>
+
+</html>s
+<section id="policies"
+  style="max-width:1120px;margin:40px auto;padding:24px;background:#fff;border:1px solid #e4e9f0;border-radius:20px;font-family:Arial,sans-serif;line-height:1.7;">
   <h2 style="color:#176b4d;">Delivery & Return Policy</h2>
   <p>M Rehan Store mein aapka khush aamdeed! Order karne se pehle hamari policy parh lein.</p>
 
   <h3>🚚 Pakistan-Wide Delivery</h3>
-  <p>Hum Pakistan bhar mein delivery provide karte hain. Delivery ka waqt location aur courier service par depend karega.</p>
+  <p>Hum Pakistan bhar mein delivery provide karte hain. Delivery ka waqt location aur courier service par depend
+    karega.</p>
 
   <h3>💰 Delivery Charges</h3>
   <p>Har order par Rs. 250 delivery charges honge.</p>
 
   <h3>↩️ 7-Day Return & Exchange</h3>
-  <p>Product receive karne ke 7 din ke andar return ya exchange ki request karein. Product unused aur original condition aur packaging mein hona chahiye.</p>
+  <p>Product receive karne ke 7 din ke andar return ya exchange ki request karein. Product unused aur original condition
+    aur packaging mein hona chahiye.</p>
 
   <h3>📦 Damaged Ya Ghalat Product</h3>
-  <p>Agar damaged ya ghalat product mile, to jald se jald store se rabta karein. Return ya exchange ki approval aur courier charges pehle confirm kiye jayenge.</p>
+  <p>Agar damaged ya ghalat product mile, to jald se jald store se rabta karein. Return ya exchange ki approval aur
+    courier charges pehle confirm kiye jayenge.</p>
 
   <p><strong>Madad chahiye?</strong> Apne order ki details ke saath store se WhatsApp par rabta karein.</p>
 </section>
-<footer id="contact">
-  
+<footer id="contact"></footer>
