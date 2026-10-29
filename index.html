@@ -77,3 +77,24 @@ function hideCheckout(){document.getElementById("checkout").classList.add("hidde
 document.getElementById("form").addEventListener("submit",e=>{e.preventDefault();if(!sum())return alert("Your cart is empty.");if(STORE_WHATSAPP_NUMBER==="923001234567")return alert("Please replace the demo WhatsApp number in the code before testing orders.");let lines=Object.keys(cart).filter(id=>products[id]&&cart[id]>0).map(id=>`- ${products[id].name} x ${cart[id]} = Rs. ${(products[id].price*cart[id]).toLocaleString("en-PK")}`);let msg=["NEW ORDER — M Rehan Store","",...lines,"","Total: Rs. "+sum().toLocaleString("en-PK"),"Payment: Cash on Delivery","","Customer: "+document.getElementById("name").value.trim(),"Phone: "+document.getElementById("phone").value.trim(),"Address: "+document.getElementById("address").value.trim(),document.getElementById("notes").value.trim()?"Notes: "+document.getElementById("notes").value.trim():""].filter(Boolean).join("\n");window.open("https://wa.me/"+STORE_WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg),"_blank","noopener");document.getElementById("status").textContent="WhatsApp opened. Press Send in WhatsApp to send the order to the store."});
 render();
 </script></body></html>
+
+<section id="policies" style="max-width:1120px;margin:40px auto;padding:24px;background:#fff;border:1px solid #e4e9f0;border-radius:20px;font-family:Arial,sans-serif;line-height:1.7;">
+  <h2 style="color:#176b4d;">Delivery & Return Policy</h2>
+  <p>M Rehan Store mein aapka khush aamdeed! Order karne se pehle hamari policy parh lein.</p>
+
+  <h3>🚚 Pakistan-Wide Delivery</h3>
+  <p>Hum Pakistan bhar mein delivery provide karte hain. Delivery ka waqt location aur courier service par depend karega.</p>
+
+  <h3>💰 Delivery Charges</h3>
+  <p>Har order par Rs. 250 delivery charges honge.</p>
+
+  <h3>↩️ 7-Day Return & Exchange</h3>
+  <p>Product receive karne ke 7 din ke andar return ya exchange ki request karein. Product unused aur original condition aur packaging mein hona chahiye.</p>
+
+  <h3>📦 Damaged Ya Ghalat Product</h3>
+  <p>Agar damaged ya ghalat product mile, to jald se jald store se rabta karein. Return ya exchange ki approval aur courier charges pehle confirm kiye jayenge.</p>
+
+  <p><strong>Madad chahiye?</strong> Apne order ki details ke saath store se WhatsApp par rabta karein.</p>
+</section>
+<footer id="contact">
+  
