@@ -5,7 +5,53 @@
 <title>M Rehan Store</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#172331;background:#f4f6fa}nav{background:#26394b;padding:16px 5%;display:flex;justify-content:flex-end;gap:24px;flex-wrap:wrap}nav a{color:white;text-decoration:none;font-size:18px}.hero{background:white;text-align:center;padding:75px 20px}.hero h1{font-size:clamp(30px,4vw,48px)}.blue{color:#3763ff}.hero p{font-size:20px}.btn{border:0;background:#15212d;color:white;padding:14px 22px;border-radius:9px;font-size:16px;cursor:pointer}.products{max-width:1120px;margin:auto;padding:42px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px}.product,.panel{background:white;border-radius:16px;padding:28px 22px;text-align:center;box-shadow:0 6px 20px #14233212}.emoji{font-size:64px;margin:8px 0 22px}.product h2{font-size:24px}.price{font-size:20px;margin:24px}.cart-area{max-width:900px;margin:0 auto 50px;padding:0 20px}.panel{text-align:left;margin-bottom:24px}.cart-row{display:grid;grid-template-columns:1fr auto auto auto;gap:14px;align-items:center;border-bottom:1px solid #e5e9ef;padding:14px 0}.qty{display:flex;gap:8px;align-items:center}.qty button,.remove{border:0;background:#e9eef5;padding:7px 11px;border-radius:7px;cursor:pointer}.remove{color:#9a1b1b}.total{text-align:right;font-size:22px;font-weight:bold;margin:22px 0}form{display:grid;gap:14px}label{font-weight:bold;display:grid;gap:7px}input,textarea{width:100%;padding:12px;border:1px solid #cbd3df;border-radius:8px;font:inherit}textarea{min-height:80px}.note{font-size:14px;color:#586779;line-height:1.5}.hidden{display:none}footer{background:#26394b;color:white;text-align:center;padding:22px}@media(max-width:600px){nav{justify-content:center}.cart-row{grid-template-columns:1fr auto}.cart-row .line-price{grid-column:2;grid-row:1}}
-</style></head><body>
+</style>
+<style>
+:root{--ink:#142033;--muted:#64748b;--navy:#101827;--green:#176b4d;--pale:#dff5e9;--paper:#f5f7fb;--line:#e4e9f0;--shadow:0 14px 36px rgba(16,24,39,.08)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}
+nav{position:sticky;top:0;z-index:10;background:rgba(16,24,39,.97);backdrop-filter:blur(12px);padding:14px max(5%,calc((100% - 1120px)/2));display:flex;justify-content:flex-end;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 5px 20px #0002}
+nav a{color:#f3f6fb;text-decoration:none;font-size:14px;font-weight:650;transition:color .2s}
+nav a:hover{color:#9be8b9}
+.hero{max-width:1120px;margin:26px auto 0;padding:clamp(34px,7vw,76px) clamp(20px,5vw,60px);border-radius:28px;background:radial-gradient(circle at 88% 18%,#64d19b3b,transparent 28%),linear-gradient(120deg,#101827,#1c3441 68%,#1a5944);color:#fff;text-align:left;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:260px;height:260px;right:-70px;bottom:-110px;border:1px solid #ffffff2c;border-radius:50%;box-shadow:0 0 0 30px #ffffff09,0 0 0 65px #ffffff07;pointer-events:none}
+.hero h1{font-size:clamp(32px,6vw,62px);line-height:1.08;letter-spacing:-.045em;margin:0 0 18px;position:relative;z-index:1}
+.blue{color:#9be8b9}
+.hero p{font-size:clamp(16px,2vw,19px);max-width:570px;color:#d0dae5;margin:0 0 26px;position:relative;z-index:1}
+.btn{border:0;background:var(--green);color:#fff;padding:13px 20px;border-radius:12px;font-size:15px;font-weight:750;cursor:pointer;transition:transform .18s,background .18s;min-height:45px}
+.btn:hover{background:#12583f;transform:translateY(-1px)}
+.hero .btn{position:relative;z-index:1}
+.products{max-width:1120px;margin:auto;padding:50px 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.product,.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;text-align:center;box-shadow:0 5px 20px #10203308;transition:transform .2s,box-shadow .2s;min-width:0}
+.product:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.emoji{font-size:66px;margin:5px auto 20px;width:100%;padding:24px 0;border-radius:15px;background:linear-gradient(145deg,#f0f5f8,#e7f3ed)}
+.product h2{font-size:21px;margin:8px 0}
+.price{font-size:20px;font-weight:850;margin:16px 0 20px;color:var(--green)}
+.cart-area{max-width:920px;margin:0 auto 56px;padding:0 20px}
+.panel{text-align:left;margin-bottom:22px;padding:clamp(20px,4vw,32px)}
+.panel h2{font-size:25px;letter-spacing:-.03em;margin-top:0}
+.cart-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:14px;align-items:center;border-bottom:1px solid var(--line);padding:16px 0}
+.qty{display:flex;gap:8px;align-items:center;font-weight:750}
+.qty button,.remove{border:1px solid var(--line);background:#f7f9fc;padding:7px 11px;border-radius:8px;cursor:pointer}
+.qty button:hover{background:var(--pale)}
+.remove{color:#a12626;background:#fff7f7}
+.total{text-align:right;font-size:22px;font-weight:850;margin:22px 0}
+form{display:grid;gap:15px}
+label{font-weight:700;font-size:14px;display:grid;gap:7px}
+input,textarea{width:100%;padding:13px 14px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:var(--ink);font:inherit;outline:none}
+input:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px #176b4d1f}
+textarea{min-height:90px;resize:vertical}
+.note{font-size:13px;color:var(--muted);line-height:1.6}
+.hidden{display:none!important}
+footer{background:var(--navy);color:#fff;text-align:center;padding:30px 22px}
+footer p{color:#bdc8d6;margin:6px 0 0;font-size:13px}
+@media(max-width:800px){nav{justify-content:center;gap:16px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.product{padding:17px}.emoji{font-size:58px;padding:18px 0}}
+@media(max-width:560px){nav{position:relative;padding:14px 10px;gap:10px 16px}nav a{font-size:13px}.hero{margin:12px 12px 0;padding:32px 22px;border-radius:21px}.hero h1{font-size:37px}.hero p{font-size:15px}.products{padding:35px 12px;gap:10px}.product{padding:11px;border-radius:15px}.emoji{font-size:48px;padding:14px 0;margin-bottom:12px}.product h2{font-size:16px}.price{font-size:17px;margin:12px 0}.product .btn{width:100%;font-size:12px;padding:10px 7px}.cart-area{padding:0 12px 40px}.panel{padding:18px;border-radius:16px}.panel h2{font-size:21px}.cart-row{grid-template-columns:minmax(0,1fr) auto;gap:10px}.cart-row .line-price{grid-column:2;grid-row:1}.cart-row .qty{grid-column:1;grid-row:2}.cart-row .remove{grid-column:2;grid-row:2}.total{font-size:20px}form .btn{width:100%}footer{padding:24px 16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+
+</head><body>
 <nav><a href="#home">Home</a><a href="#products">Products</a><a href="#cart">Cart (<span id="count">0</span>)</a><a href="#contact">Contact</a></nav>
 <section class="hero" id="home"><h1>Welcome to <span class="blue">M Rehan Store</span></h1><p>Your own online shopping destination!</p><a href="#products"><button class="btn">Shop Now</button></a></section>
 <section class="products" id="products">
