@@ -682,7 +682,15 @@
   <script>
     const STORE_WHATSAPP_NUMBER = "923348660508"; // Replace with your WhatsApp number: Pakistan format 92 + number without first 0, no + or spaces.
     const products = { headphones: { name: "Headphones", price: 5000, emoji: "🎧" }, watch: { name: "Smart Watch", price: 4000, emoji: "⌚" }, backpack: { name: "Backpack", price: 3500, emoji: "🎒" } };
-    let cart = {}; try { cart = JSON.parse(localconst DELIVERY_CHARGES = 250;
+const DELIVERY_CHARGES = 250;
+
+let cart = {};
+
+try {
+  cart = JSON.parse(localStorage.getItem("mRehanCart") || "{}");
+} catch (e) {
+  cart = {};
+}
 
 function subtotal() {
   return Object.keys(cart).reduce(
@@ -693,9 +701,18 @@ function subtotal() {
 
 function sum() {
   return subtotal() + (subtotal() > 0 ? DELIVERY_CHARGES : 0);
-}Storage.getItem("mRehanCart") || "{}") } catch (e) { cart = {} }
-    function save() { localStorage.setItem("mRehanCart", JSON.stringify(cart)); render() }
-    function add(id) {
+}
+
+function save() {
+  localStorage.setItem("mRehanCart", JSON.stringify(cart));
+  render();
+}
+
+function add(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  save();
+  document.getElementById("cart").scrollIntoView({ behavior: "smooth" });
+}
   cart[id] = (cart[id] || 0) + 1;
   save();
   render();
