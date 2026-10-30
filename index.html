@@ -695,7 +695,12 @@ function sum() {
   return subtotal() + (subtotal() > 0 ? DELIVERY_CHARGES : 0);
 }Storage.getItem("mRehanCart") || "{}") } catch (e) { cart = {} }
     function save() { localStorage.setItem("mRehanCart", JSON.stringify(cart)); render() }
-    function add(id) { cart[id] = (cart[id] || 0) + 1; save(); document.getElementById("cart").scrollIntoView({ behavior: "smooth" }) }
+    function add(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  save();
+  render();
+  document.getElementById("cart").scrollIntoView({ behavior: "smooth" });
+}
     function qty(id, n) { cart[id] = (cart[id] || 0) + n; if (cart[id] <= 0) delete cart[id]; save() }
     function removeItem(id) { delete cart[id]; save() }
  function render() {
