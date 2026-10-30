@@ -8,7 +8,7 @@
   <style>
     * {
       box-sizing: border-box
-    }
+    }f
 
     body {
       margin: 0;
@@ -228,6 +228,22 @@
   margin-top: 20px;
   color: #dddddd;
 }
+ .review-whatsapp {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 22px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.review-whatsapp:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+} 
   </style>
   <style>
     :root {
@@ -656,6 +672,58 @@
         transition: none !important
       }
     }
+ .about-section,
+.contact-section {
+  background: #102a2a;
+  color: white;
+  padding: 30px 20px;
+  margin: 25px 0;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.about-section h2,
+.contact-section h2 {
+  color: #2ecc71;
+  margin-bottom: 15px;
+}
+
+.about-section p,
+.contact-section p {
+  color: #dddddd;
+  line-height: 1.7;
+  max-width: 650px;
+  margin: 10px auto;
+}
+.hero {
+  text-align: center;
+  padding: 70px 20px;
+  margin: 20px 0;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #102a2a, #193b35);
+}
+
+.hero h1 {
+  font-size: 38px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.hero .blue {
+  color: #2ecc71;
+}
+
+.hero p {
+  color: #dddddd;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.hero .btn {
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 8px;
+}  
   </style>
 
 </head>
@@ -723,6 +791,35 @@
   <p class="review-contact">
     Purchased from us? Share your feedback on WhatsApp.
   </p>
+
+   <a
+  class="review-whatsapp"
+  href="https://wa.me/923000000000?text=Hello%20M%20Rehan%20Store%2C%20I%20want%20to%20share%20my%20feedback."
+  target="_blank"
+  rel="noopener">
+  💬 Share Your Review on WhatsApp
+</a>
+</section>
+<section id="about" class="about-section">
+  <h2>About M Rehan Store</h2>
+  <p>
+    Welcome to M Rehan Store! We aim to make online shopping
+    simple, convenient, and affordable. Explore our collection
+    of quality products and enjoy Cash on Delivery across Pakistan.
+  </p>
+</section>
+  <section id="contact-us" class="contact-section">
+  <h2>Contact M Rehan Store</h2>
+  <p>Have a question about a product or your order?</p>
+  <p>We are happy to help you!</p>
+
+  <a
+    href="https://wa.me/923000000000"
+    target="_blank"
+    rel="noopener"
+    class="review-whatsapp">
+    💬 Contact Us on WhatsApp
+  </a>
 </section>
   <footer id="contact"><strong>M Rehan Store</strong>
     <p>Contact: Add your business contact details here</p>
