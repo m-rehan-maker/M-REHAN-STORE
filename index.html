@@ -680,7 +680,7 @@
     <p>Contact: Add your business contact details here</p>
   </footer>
   <script>
-    const STORE_WHATSAPP_NUMBER = "923348660508"; // Replace with your WhatsApp number: Pakistan format 92 + number without first 0, no + or spaces.
+    const STORE_WHATSAPP_NUMBER = "923000000000"; // Replace with your WhatsApp number: Pakistan format 92 + number without first 0, no + or spaces.
     const products = { headphones: { name: "Headphones", price: 5000, emoji: "🎧" }, watch: { name: "Smart Watch", price: 4000, emoji: "⌚" }, backpack: { name: "Backpack", price: 3500, emoji: "🎒" } };
 const DELIVERY_CHARGES = 250;
 
@@ -711,11 +711,6 @@ function save() {
 function add(id) {
   cart[id] = (cart[id] || 0) + 1;
   save();
-  document.getElementById("cart").scrollIntoView({ behavior: "smooth" });
-}
-  cart[id] = (cart[id] || 0) + 1;
-  save();
-  render();
   document.getElementById("cart").scrollIntoView({ behavior: "smooth" });
 }
     function qty(id, n) { cart[id] = (cart[id] || 0) + n; if (cart[id] <= 0) delete cart[id]; save() }
