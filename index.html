@@ -698,12 +698,92 @@ function sum() {
     function add(id) { cart[id] = (cart[id] || 0) + 1; save(); document.getElementById("cart").scrollIntoView({ behavior: "smooth" }) }
     function qty(id, n) { cart[id] = (cart[id] || 0) + n; if (cart[id] <= 0) delete cart[id]; save() }
     function removeItem(id) { delete cart[id]; save() }
-    
-    function render() { let ids = Object.keys(cart).filter(id => products[id] && cart[id] > 0); document.getElementById("count").textContent = ids.reduce((s, id) => s + cart[id], 0); document.document.getElementById("total").textContent =   "Subtotal: Rs. " + subtotal().toLocaleString("en-PK") +   " | Delivery: Rs. " + (subtotal() > 0 ? DELIVERY_CHARGES : 0).toLocaleString("en-PK") +   " | Grand Total: Rs. " + sum().toLocaleString("en-PK"); let b = document.getElementById("checkoutBtn"); b.disabled = !ids.length; b.style.opacity = ids.length ? "1" : "0.5"; document.getElementById("items").innerHTML = ids.length ? ids.map(id => { let p = products[id]; return `<div class="cart-row"><div><b>${p.emoji} ${p.name}</b><br><span class="note">Rs. ${p.price.toLocaleString("en-PK")} each</span></div><div class="qty"><button onclick="qty('${id}',-1)">−</button>${cart[id]}<button onclick="qty('${id}',1)">+</button></div><b class="line-price">Rs. ${(p.price * cart[id]).toLocaleString("en-PK")}</b><button class="remove" onclick="removeItem('${id}')">Remove</button></div>` }).join("") : "Your cart is empty. Add a product to get started." }
-    function showCheckout() { if (sum()) { document.getElementById("checkout").classList.remove("hidden"); document.getElementById("checkout").scrollIntoView({ behavior: "smooth" }) } }
-    function hideCheckout() { document.getElementById("checkout").classList.add("hidden"); document.getElementById("cart").scrollIntoView({ behavior: "smooth" }) }
-    document.getElementById("form").addEventListener("submit", e => { e.preventDefault(); if (!sum()) return alert("Your cart is empty."); if (STORE_WHATSAPP_NUMBER === "923001234567") return alert("Please replace the demo WhatsApp number in the code before testing orders."); let lines = Object.keys(cart).filter(id => products[id] && cart[id] > 0).map(id => `- ${products[id].name} x ${cart[id]} =let msg ="", "Subtotal: Rs. " + subtotal().toLocaleString("en-PK"), "Delivery Charges: Rs. " + DELIVERY_CHARGES.toLocaleString("en-PK"), "Grand Total: Rs. " + sum().toLocaleString("en-PK"), "Payment: Cash on Delivery", "", "Customer: " + document.getElementById("name").value.trim(), "Phone: " + document.getElementById("phone").value.trim(), "Address: " + document.getElementById("address").value.trim(), document.getElementById("notes").value.trim() ? "Notes: " + document.getElementById("notes").value.trim() : ""].filter(Boolean).join("\n"); window.open("https://wa.me/" + STORE_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg), "_blank", "noopener"); document.getElementById("status").textContent = "WhatsApp opened. Press Send in WhatsApp to send the order to the store." });
-    render();
+ function render() {
+  let ids = Object.keys(cart).filter(id => products[id] && cart[id] > 0);
+
+  document.getElementById("count").textContent =
+    ids.reduce((s, id) => s + cart[id], 0);
+
+  document.getElementById("total").textContent =
+    "Subtotal: Rs. " + subtotal().toLocaleString("en-PK") +
+    " | Delivery: Rs. " + (subtotal() > 0 ? DELIVERY_CHARGES : 0).toLocaleString("en-PK") +
+    " | Grand Total: Rs. " + sum().toLocaleString("en-PK");
+
+  let b = document.getElementById("checkoutBtn");
+  b.disabled = !ids.length;
+  b.style.opacity = ids.length ? "1" : "0.5";
+
+  document.getElementById("items").innerHTML = ids.length
+    ? ids.map(id => {
+        let p = products[id];
+        return `<div class="cart-row">
+          <div><b>${p.emoji} ${p.name}</b><br>
+          <span class="note">Rs. ${p.price.toLocaleString("en-PK")} each</span></div>
+          <div class="qty">
+            <button onclick="qty('${id}',-1)">−</button>
+            ${cart[id]}
+            <button onclick="qty('${id}',1)">+</button>
+          </div>
+          <b class="line-price">Rs. ${(p.price * cart[id]).toLocaleString("en-PK")}</b>
+          <button class="remove" onclick="removeItem('${id}')">Remove</button>
+        </div>`;
+      }).join("")
+    : "Your cart is empty. Add a product to get started.";
+}
+
+function showCheckout() {
+  if (sum()) {
+    document.getElementById("checkout").classList.remove("hidden");
+    document.getElementById("checkout").scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+function hideCheckout() {
+  document.getElementById("checkout").classList.add("hidden");
+  document.getElementById("cart").scrollIntoView({ behavior: "smooth" });
+}
+
+document.getElementById("form").addEventListener("submit", e => {
+  e.preventDefault();
+
+  if (!sum()) return alert("Your cart is empty.");
+
+  if (STORE_WHATSAPP_NUMBER === "923001234567") {
+    return alert("Please replace the demo WhatsApp number in the code before testing orders.");
+  }
+
+  let lines = Object.keys(cart)
+    .filter(id => products[id] && cart[id] > 0)
+    .map(id => `- ${products[id].name} x ${cart[id]} = Rs. ${(products[id].price * cart[id]).toLocaleString("en-PK")}`)
+    .join("\n");
+
+  let msg = [
+    "M Rehan Store Order",
+    lines,
+    "Subtotal: Rs. " + subtotal().toLocaleString("en-PK"),
+    "Delivery Charges: Rs. " + DELIVERY_CHARGES.toLocaleString("en-PK"),
+    "Grand Total: Rs. " + sum().toLocaleString("en-PK"),
+    "Payment: Cash on Delivery",
+    "",
+    "Customer: " + document.getElementById("name").value.trim(),
+    "Phone: " + document.getElementById("phone").value.trim(),
+    "Address: " + document.getElementById("address").value.trim(),
+    document.getElementById("notes").value.trim()
+      ? "Notes: " + document.getElementById("notes").value.trim()
+      : ""
+  ].filter(Boolean).join("\n");
+
+  window.open(
+    "https://wa.me/" + STORE_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg),
+    "_blank",
+    "noopener"
+  );
+
+  document.getElementById("status").textContent =
+    "WhatsApp opened. Press Send in WhatsApp to send the order to the store.";
+});
+
+render();
   </script>
 </body>
 
