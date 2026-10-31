@@ -38,7 +38,7 @@
     .hero {
   background: linear-gradient(135deg, #102a2a, #193b35);
   text-align: center;
-  padding: 100px 20px;
+  padding: 75px 20px;
   width: 100vw;
   box-sizing: border-box;
   position: relative;
@@ -311,10 +311,12 @@
     }
 
     .hero {
-      max-width: 1120px;
-      margin: 26px auto 0;
+      max-width: none;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0;
       padding: clamp(34px, 7vw, 76px) clamp(20px, 5vw, 60px);
-      border-radius: 28px;
+      border-radius: 0;
       background: radial-gradient(circle at 88% 18%, #64d19b3b, transparent 28%), linear-gradient(120deg, #101827, #1c3441 68%, #1a5944);
       color: #fff;
       text-align: left;
@@ -580,9 +582,9 @@
       }
 
       .hero {
-        margin: 12px 12px 0;
+        margin: 0;
         padding: 32px 22px;
-        border-radius: 21px
+        border-radius: 0
       }
 
       .hero h1 {
@@ -707,8 +709,8 @@
 .hero {
   text-align: center;
   padding: 70px 20px;
-  margin: 20px 0;
-  border-radius: 15px;
+  margin: 0;
+  border-radius: 0;
   background: linear-gradient(135deg, #102a2a, #193b35);
 }
 
